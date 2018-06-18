@@ -8,7 +8,7 @@ const List = (props) => {
   return (
     <div>
       <div className="employee-list">
-        {props.employees.map(employee => <Detail employee={employee} />)}
+        {props.employees.map(employee => <Detail key={employee._id} employee={employee} />)}
       </div>
     </div>
   );

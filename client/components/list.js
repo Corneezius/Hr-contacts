@@ -1,14 +1,14 @@
 import React from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import { Employees} from "../../imports/collections/employees";
-import EmployeeDetail from "./detail";
+import Detail from "./detail";
 
 const List = (props) => {
 
   return (
     <div>
       <div className="employee-list">
-        {props.employees.map(employee => <EmployeeDetail />)}
+        {props.employees.map(employee => <Detail employee={employee} />)}
       </div>
     </div>
   );

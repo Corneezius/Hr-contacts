@@ -1,6 +1,10 @@
 import React from "react";
+import { withTracker } from "meteor/react-meteor-data";
+import { Employees} from "../../imports/collections/employees";
 
-const List = () => {
+const List = (props) => {
+
+  console.log(props.employees);
   return (
     <div>
       <div className="employee-list">
@@ -10,4 +14,10 @@ const List = () => {
   );
 };
 
-export default List;
+
+export default withTracker(() => {
+ // Setup subscription
+ Meteor.subscribe('employees');
+ return { employees: Employees.find({}).fetch() };
+ // return an object, return is sent to EmployeeList as props
+}) (List);

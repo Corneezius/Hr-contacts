@@ -5,6 +5,7 @@ import {image, helpers} from "faker";
 
 Meteor.startup(() => {
   const numberRecords = Employees.find({}).count();
+  console.log(numberRecords);
     if (!numberRecords) {
       _.times(5000, () => {
       const { name, email, phone} = helpers.createCard();
@@ -16,7 +17,7 @@ Meteor.startup(() => {
     });
   };
 
-  Meteor.publish("employeer", function() {
+  Meteor.publish("employees", function() {
     return Employees.find({}, {limit: 20});
   })
 });
